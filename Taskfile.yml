@@ -1,0 +1,26 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  up:
+    cmds:
+      - kind create cluster -n helm-test
+  down:
+    cmds:
+      - kind delete cluster -n helm-test
+
+  cortex:
+    dir: ./terraform/cortex
+    cmds:
+      - echo $KUBECONFIG
+      - terraform init
+      - terraform apply -auto-approve
