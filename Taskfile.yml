@@ -13,10 +13,10 @@ tasks:
 
   up:
     cmds:
-      - kind create cluster -n helm-test
+      - kind create cluster -n kind-home
   down:
     cmds:
-      - kind delete cluster -n helm-test
+      - kind delete cluster -n kind-home
 
   cortex:
     dir: ./terraform/cortex
